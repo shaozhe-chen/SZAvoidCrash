@@ -15,4 +15,6 @@
     
 三、NSTimer处理：
     1. NSTimer在target dealloc之后，自动销毁定时器，无需手动销毁。
+    
     2. NSTimer避免与target循环引用
+    
