@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSObject (AvoidCrash)
-
+BOOL classMethodSwizzle(Class aClass, SEL originalSelector, SEL swizzleSelector) ;
 @end
 
 NS_ASSUME_NONNULL_END

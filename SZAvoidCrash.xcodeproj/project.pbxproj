@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B55646A225ED9F300840330 /* KVOCrashController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B556468225ED9F300840330 /* KVOCrashController.m */; };
+		6B55646B225ED9F300840330 /* KVOCrashController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B556469225ED9F300840330 /* KVOCrashController.xib */; };
+		6B556471225EDACA00840330 /* UnrecognizedSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B556470225EDACA00840330 /* UnrecognizedSelectorViewController.m */; };
+		6B556474225EDDD900840330 /* KVOObservObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B556473225EDDD900840330 /* KVOObservObj.m */; };
+		6B556477225EE33F00840330 /* NSObject+KVOCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B556476225EE33F00840330 /* NSObject+KVOCrash.m */; };
 		6BA6A6642252F6B800C97E8E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA6A6632252F6B800C97E8E /* AppDelegate.m */; };
 		6BA6A6672252F6B800C97E8E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA6A6662252F6B800C97E8E /* ViewController.m */; };
 		6BA6A66A2252F6B800C97E8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BA6A6682252F6B800C97E8E /* Main.storyboard */; };
@@ -15,6 +20,8 @@
 		6BA6A6722252F6B900C97E8E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA6A6712252F6B900C97E8E /* main.m */; };
 		6BA6A67C2252F6B900C97E8E /* SZAvoidCrashTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA6A67B2252F6B900C97E8E /* SZAvoidCrashTests.m */; };
 		6BA6A6872252F6B900C97E8E /* SZAvoidCrashUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA6A6862252F6B900C97E8E /* SZAvoidCrashUITests.m */; };
+		6BA6A69C2253056400C97E8E /* ForwardingTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA6A69B2253056400C97E8E /* ForwardingTarget.m */; };
+		6BA6A69F2253058C00C97E8E /* NSObject+AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA6A69E2253058C00C97E8E /* NSObject+AvoidCrash.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +42,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6B556467225ED9F300840330 /* KVOCrashController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KVOCrashController.h; sourceTree = "<group>"; };
+		6B556468225ED9F300840330 /* KVOCrashController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KVOCrashController.m; sourceTree = "<group>"; };
+		6B556469225ED9F300840330 /* KVOCrashController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KVOCrashController.xib; sourceTree = "<group>"; };
+		6B55646F225EDACA00840330 /* UnrecognizedSelectorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnrecognizedSelectorViewController.h; sourceTree = "<group>"; };
+		6B556470225EDACA00840330 /* UnrecognizedSelectorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnrecognizedSelectorViewController.m; sourceTree = "<group>"; };
+		6B556472225EDDD900840330 /* KVOObservObj.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KVOObservObj.h; sourceTree = "<group>"; };
+		6B556473225EDDD900840330 /* KVOObservObj.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KVOObservObj.m; sourceTree = "<group>"; };
+		6B556475225EE33F00840330 /* NSObject+KVOCrash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+KVOCrash.h"; sourceTree = "<group>"; };
+		6B556476225EE33F00840330 /* NSObject+KVOCrash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KVOCrash.m"; sourceTree = "<group>"; };
 		6BA6A65F2252F6B800C97E8E /* SZAvoidCrash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SZAvoidCrash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BA6A6622252F6B800C97E8E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6BA6A6632252F6B800C97E8E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -51,6 +67,10 @@
 		6BA6A6822252F6B900C97E8E /* SZAvoidCrashUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SZAvoidCrashUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BA6A6862252F6B900C97E8E /* SZAvoidCrashUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZAvoidCrashUITests.m; sourceTree = "<group>"; };
 		6BA6A6882252F6B900C97E8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6BA6A69A2253056400C97E8E /* ForwardingTarget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForwardingTarget.h; sourceTree = "<group>"; };
+		6BA6A69B2253056400C97E8E /* ForwardingTarget.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForwardingTarget.m; sourceTree = "<group>"; };
+		6BA6A69D2253058C00C97E8E /* NSObject+AvoidCrash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+AvoidCrash.h"; sourceTree = "<group>"; };
+		6BA6A69E2253058C00C97E8E /* NSObject+AvoidCrash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AvoidCrash.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +98,65 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6B556463225ED81700840330 /* AvoidCrash */ = {
+			isa = PBXGroup;
+			children = (
+				6B556465225ED86000840330 /* KVOCrash */,
+				6B556464225ED82C00840330 /* UnrecognizedSelector */,
+			);
+			path = AvoidCrash;
+			sourceTree = "<group>";
+		};
+		6B556464225ED82C00840330 /* UnrecognizedSelector */ = {
+			isa = PBXGroup;
+			children = (
+				6BA6A69A2253056400C97E8E /* ForwardingTarget.h */,
+				6BA6A69B2253056400C97E8E /* ForwardingTarget.m */,
+				6BA6A69D2253058C00C97E8E /* NSObject+AvoidCrash.h */,
+				6BA6A69E2253058C00C97E8E /* NSObject+AvoidCrash.m */,
+			);
+			path = UnrecognizedSelector;
+			sourceTree = "<group>";
+		};
+		6B556465225ED86000840330 /* KVOCrash */ = {
+			isa = PBXGroup;
+			children = (
+				6B556475225EE33F00840330 /* NSObject+KVOCrash.h */,
+				6B556476225EE33F00840330 /* NSObject+KVOCrash.m */,
+			);
+			path = KVOCrash;
+			sourceTree = "<group>";
+		};
+		6B556466225ED9B500840330 /* KVOCrashDemo */ = {
+			isa = PBXGroup;
+			children = (
+				6B556467225ED9F300840330 /* KVOCrashController.h */,
+				6B556468225ED9F300840330 /* KVOCrashController.m */,
+				6B556469225ED9F300840330 /* KVOCrashController.xib */,
+				6B556472225EDDD900840330 /* KVOObservObj.h */,
+				6B556473225EDDD900840330 /* KVOObservObj.m */,
+			);
+			path = KVOCrashDemo;
+			sourceTree = "<group>";
+		};
+		6B55646D225EDA8C00840330 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				6B55646E225EDAA900840330 /* UnrecognizedSelectorDemo */,
+				6B556466225ED9B500840330 /* KVOCrashDemo */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		6B55646E225EDAA900840330 /* UnrecognizedSelectorDemo */ = {
+			isa = PBXGroup;
+			children = (
+				6B55646F225EDACA00840330 /* UnrecognizedSelectorViewController.h */,
+				6B556470225EDACA00840330 /* UnrecognizedSelectorViewController.m */,
+			);
+			path = UnrecognizedSelectorDemo;
+			sourceTree = "<group>";
+		};
 		6BA6A6562252F6B800C97E8E = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +180,8 @@
 		6BA6A6612252F6B800C97E8E /* SZAvoidCrash */ = {
 			isa = PBXGroup;
 			children = (
+				6B55646D225EDA8C00840330 /* Demo */,
+				6B556463225ED81700840330 /* AvoidCrash */,
 				6BA6A6622252F6B800C97E8E /* AppDelegate.h */,
 				6BA6A6632252F6B800C97E8E /* AppDelegate.m */,
 				6BA6A6652252F6B800C97E8E /* ViewController.h */,
@@ -235,6 +316,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B55646B225ED9F300840330 /* KVOCrashController.xib in Resources */,
 				6BA6A66F2252F6B900C97E8E /* LaunchScreen.storyboard in Resources */,
 				6BA6A66C2252F6B900C97E8E /* Assets.xcassets in Resources */,
 				6BA6A66A2252F6B800C97E8E /* Main.storyboard in Resources */,
@@ -262,9 +344,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B556477225EE33F00840330 /* NSObject+KVOCrash.m in Sources */,
+				6BA6A69F2253058C00C97E8E /* NSObject+AvoidCrash.m in Sources */,
 				6BA6A6672252F6B800C97E8E /* ViewController.m in Sources */,
 				6BA6A6722252F6B900C97E8E /* main.m in Sources */,
 				6BA6A6642252F6B800C97E8E /* AppDelegate.m in Sources */,
+				6B55646A225ED9F300840330 /* KVOCrashController.m in Sources */,
+				6B556474225EDDD900840330 /* KVOObservObj.m in Sources */,
+				6B556471225EDACA00840330 /* UnrecognizedSelectorViewController.m in Sources */,
+				6BA6A69C2253056400C97E8E /* ForwardingTarget.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
