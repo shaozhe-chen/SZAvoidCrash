@@ -33,7 +33,7 @@
 }
 
 - (void)startTimer {
-//    [self.timer fire];
+    [self.timer fire];
 }
 
 - (void)endTimer {
@@ -44,21 +44,18 @@
 #pragma mark timerCallBack
 - (void)timerCallBack {
     self.age += 1;
-    if (self.age > 50) {
-        [self endTimer];
-    }
+    NSLog(@"定时器回调：%@",@(self.age));
 }
 
 #pragma mark Getter
 - (NSTimer *)timer {
     if (!_timer) {
-        _timer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(timerCallBack) userInfo:nil repeats:YES];
-        [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+        _timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(timerCallBack) userInfo:nil repeats:YES];
     }
     return _timer;
 }
 
 - (void)dealloc {
-    NSLog(@"obj dealloc");
+    NSLog(@"%@  %@",NSStringFromClass(self.class), NSStringFromSelector(_cmd));
 }
 @end

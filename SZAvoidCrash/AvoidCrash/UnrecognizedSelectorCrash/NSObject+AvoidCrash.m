@@ -9,6 +9,7 @@
 #import "NSObject+AvoidCrash.h"
 #import <objc/message.h>
 #import "ForwardingTarget.h"
+#import "SZCrashAvoidWhiteList.h"
 static ForwardingTarget *_target = nil;
 @implementation NSObject (AvoidCrash)
 
@@ -39,7 +40,11 @@ static ForwardingTarget *_target = nil;
     BOOL isNull =  [classString isEqualToString:NSStringFromClass([NSNull class])];
     
     //这里可以添加需要处理unrecognized selector sent to instance 造成crash的类
-    BOOL isMyClass  = [classString isEqualToString:NSStringFromClass(NSClassFromString(@"ViewController"))];
+    BOOL isMyClass  = NO;
+    SZCrashAvoidWhiteList *whiteList = [SZCrashAvoidWhiteList shareInstance];
+    if ([whiteList unSelectorWhiteListContainClass:self.class]) {
+        isMyClass = YES;
+    }
     return isNull || isMyClass;
 }
 
@@ -64,7 +69,7 @@ static ForwardingTarget *_target = nil;
 
 #pragma mark - private method
 //交换方法
-BOOL classMethodSwizzle(Class aClass, SEL originalSelector, SEL swizzleSelector) {
+BOOL instanceMethodSwizzle(Class aClass, SEL originalSelector, SEL swizzleSelector) {
     Method originalMethod = class_getInstanceMethod(aClass, originalSelector);
     Method swizzleMethod = class_getInstanceMethod(aClass, swizzleSelector);
     BOOL didAddMethod =
@@ -80,6 +85,13 @@ BOOL classMethodSwizzle(Class aClass, SEL originalSelector, SEL swizzleSelector)
     } else {
         method_exchangeImplementations(originalMethod, swizzleMethod);
     }
+    return YES;
+}
+
+BOOL classMethodSwizzle(Class aClass, SEL originalSelector, SEL swizzleSelector) {
+    Method originalMethod = class_getClassMethod(aClass, originalSelector);
+    Method swizzleMethod = class_getClassMethod(aClass, swizzleSelector);
+    method_exchangeImplementations(originalMethod, swizzleMethod);
     return YES;
 }
 @end

@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "KVOCrashController.h"
 #import "UnrecognizedSelectorViewController.h"
+#import "NSTimerViewController.h"
 #import "KVOObservObj.h"
 static NSString *kObjName = @"szObj";
 @interface ViewController ()<
@@ -25,7 +26,7 @@ static NSString *kObjName = @"szObj";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    _datas = @[@"kvoCrashDemo", @"UnrecognizedSelectorDemo"];
+    _datas = @[@"kvoCrashDemo", @"UnrecognizedSelectorDemo", @"NSTimerCrashDemo"];
     [self.view addSubview:self.tableView];
     [self configItem];
 }
@@ -64,6 +65,9 @@ static NSString *kObjName = @"szObj";
         [self.navigationController pushViewController:vc animated:YES];
     }else if (indexPath.row == 1) {
         UnrecognizedSelectorViewController *vc = [UnrecognizedSelectorViewController new];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if (indexPath.row == 2) {
+        NSTimerViewController *vc = [NSTimerViewController new];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

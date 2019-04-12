@@ -9,6 +9,8 @@
 #import "NSObject+KVOCrash.h"
 #import <objc/message.h>
 #import "NSObject+AvoidCrash.h"
+#import "KVOProxy.h"
+#import "SZCrashAvoidWhiteList.h"
 
 static NSString *kmObserversIdentify = @"kmObserversIdentify";
 
@@ -19,60 +21,73 @@ static NSString *kmObserversIdentify = @"kmObserversIdentify";
 @implementation NSObject (KVOCrash)
 + (void)load {
     
-    classMethodSwizzle(self, @selector(addObserver:forKeyPath:options:context:), @selector(sz_addObserver:forKeyPath:options:context:));
-    classMethodSwizzle(self, @selector(removeObserver:forKeyPath:), @selector(sz_removeObserver:forKeyPath:));
+    instanceMethodSwizzle(self, @selector(addObserver:forKeyPath:options:context:), @selector(sz_addObserver:forKeyPath:options:context:));
+    instanceMethodSwizzle(self, @selector(removeObserver:forKeyPath:), @selector(sz_removeObserver:forKeyPath:));
 }
 
 - (void)sz_addObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options context:(void *)context {
+   
+    SZCrashAvoidWhiteList *whiteList = [SZCrashAvoidWhiteList shareInstance];
+    if (![whiteList KVOWhiteListContainClass:self.class]) {
+        return;
+    }
     @try {
         //写错keypath的时候，valueForKey会crash，使用try_catch可以避免崩溃
         [self valueForKey:keyPath];
-        //如果没有崩溃则继续走
-        if (observer && keyPath.length > 0 && keyPath != nil) {
-            //避免重复添加
-            if (![self hasSameObserversKeyPath:keyPath observer:observer]) {
-                @synchronized (self) {
-                    NSMapTable *map = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsStrongMemory valueOptions:NSPointerFunctionsWeakMemory];
-                    [map setObject:observer forKey:keyPath];
-                    [self.mObservers addObject:map];
-                    NSLog(@"add :%@",self.mObservers.allObjects);
-                    [self sz_addObserver:observer forKeyPath:keyPath options:options context:context];
-                }
-            }
-        }
     } @catch (NSException *exception) {
         NSLog(@"没有该keypath：%@",[NSString stringWithFormat:@"%@",keyPath]);
+        return;
     } @finally {
         
+    }
+    
+    //如果没有崩溃则继续走
+    if (observer && keyPath.length > 0 && keyPath != nil) {
+        //避免重复添加
+        if (![self hasSameObserversKeyPath:keyPath observer:observer]) {
+            @synchronized (self) {
+                KVOProxy *kvoProxy = [KVOProxy new];
+                kvoProxy.target = self;
+                kvoProxy.observer = observer;
+                kvoProxy.keyPath = keyPath;
+                [self.mObservers addObject:kvoProxy];
+                NSLog(@"add :%@",self.mObservers.allObjects);
+                [kvoProxy.target sz_addObserver:kvoProxy forKeyPath:kvoProxy.keyPath options:options context:context];
+            }
+        }
     }
 }
 
 - (void)sz_removeObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath {
+    SZCrashAvoidWhiteList *whiteList = [SZCrashAvoidWhiteList shareInstance];
+    if (![whiteList KVOWhiteListContainClass:self.class]) {
+        return;
+    }
     if (observer) {
         //移除已经添加过的监听。避免写错keypath导致crash
-        NSMapTable *dic = [self hasSameObserversKeyPath:keyPath observer:observer];
-        if (dic) {
+        KVOProxy *kvoProxy = [self hasSameObserversKeyPath:keyPath observer:observer];
+        if (kvoProxy) {
             @synchronized (self) {
-              [self.mObservers removeObject:dic];
+              [self.mObservers removeObject:kvoProxy];
             }
-            [self sz_removeObserver:observer forKeyPath:keyPath];
+            [kvoProxy.target sz_removeObserver:kvoProxy forKeyPath:kvoProxy.keyPath];
         }
     }
 }
 
-- (NSMapTable *)hasSameObserversKeyPath:(NSString *)keyPath observer:(id)observer {
-    NSMapTable *dic_ = nil;
+- (KVOProxy *)hasSameObserversKeyPath:(NSString *)keyPath observer:(id)observer {
+    KVOProxy *kvoProxy = nil;
     NSHashTable *table = self.mObservers;
     NSLog(@"same : %@",table.allObjects);
-    for (NSMapTable *dic in [self.mObservers allObjects]) {
-        id obj = [dic objectForKey:keyPath];
-        id key = [[dic keyEnumerator] allObjects].firstObject;
-        if ([key isEqualToString:keyPath] && [observer isEqual:obj]) {
-            dic_ = dic;
+    for (KVOProxy *kvoProxy_ in [self.mObservers allObjects]) {
+        //添加同一个监听，这个条件会成立：observer == kvoProxy_.observer
+        //由于监听的时候，实际上监听的是kvoProxy_，当observer已经dealloc之后，observer == kvoProxy_.observer条件已经不成立，所以使用条件observer == kvoProxy_
+        if ([kvoProxy_.keyPath isEqualToString:keyPath] && (observer == kvoProxy_.observer || observer == kvoProxy_)) {
+            kvoProxy = kvoProxy_;
             break;
         }
     }
-    return dic_;
+    return kvoProxy;
 }
 
 #pragma 实现mObservers的声明

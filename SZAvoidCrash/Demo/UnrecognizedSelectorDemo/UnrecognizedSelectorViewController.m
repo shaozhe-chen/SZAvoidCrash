@@ -39,4 +39,8 @@
     NSLog(@"%@",_dic);
     
 }
+
+- (void)dealloc {
+    NSLog(@"%@  %@",NSStringFromClass(self.class), NSStringFromSelector(_cmd));
+}
 @end

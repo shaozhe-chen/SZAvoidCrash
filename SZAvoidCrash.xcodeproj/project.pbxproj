@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B163A452260619B003FA1F8 /* NSTimer+Crash.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B163A442260619B003FA1F8 /* NSTimer+Crash.m */; };
+		6B163A482260673A003FA1F8 /* NSTimerProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B163A472260673A003FA1F8 /* NSTimerProxy.m */; };
+		6B163A4D22606E9A003FA1F8 /* NSTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B163A4B22606E9A003FA1F8 /* NSTimerViewController.m */; };
+		6B163A4E22606E9A003FA1F8 /* NSTimerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B163A4C22606E9A003FA1F8 /* NSTimerViewController.xib */; };
+		6B163A51226074E6003FA1F8 /* KVOProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B163A50226074E6003FA1F8 /* KVOProxy.m */; };
+		6B163A55226077CB003FA1F8 /* SZCrashAvoidWhiteList.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B163A54226077CB003FA1F8 /* SZCrashAvoidWhiteList.m */; };
 		6B55646A225ED9F300840330 /* KVOCrashController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B556468225ED9F300840330 /* KVOCrashController.m */; };
 		6B55646B225ED9F300840330 /* KVOCrashController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B556469225ED9F300840330 /* KVOCrashController.xib */; };
 		6B556471225EDACA00840330 /* UnrecognizedSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B556470225EDACA00840330 /* UnrecognizedSelectorViewController.m */; };
@@ -42,6 +48,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6B163A432260619B003FA1F8 /* NSTimer+Crash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Crash.h"; sourceTree = "<group>"; };
+		6B163A442260619B003FA1F8 /* NSTimer+Crash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Crash.m"; sourceTree = "<group>"; };
+		6B163A462260673A003FA1F8 /* NSTimerProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSTimerProxy.h; sourceTree = "<group>"; };
+		6B163A472260673A003FA1F8 /* NSTimerProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSTimerProxy.m; sourceTree = "<group>"; };
+		6B163A4A22606E9A003FA1F8 /* NSTimerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSTimerViewController.h; sourceTree = "<group>"; };
+		6B163A4B22606E9A003FA1F8 /* NSTimerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSTimerViewController.m; sourceTree = "<group>"; };
+		6B163A4C22606E9A003FA1F8 /* NSTimerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NSTimerViewController.xib; sourceTree = "<group>"; };
+		6B163A4F226074E6003FA1F8 /* KVOProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KVOProxy.h; sourceTree = "<group>"; };
+		6B163A50226074E6003FA1F8 /* KVOProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KVOProxy.m; sourceTree = "<group>"; };
+		6B163A53226077CB003FA1F8 /* SZCrashAvoidWhiteList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZCrashAvoidWhiteList.h; sourceTree = "<group>"; };
+		6B163A54226077CB003FA1F8 /* SZCrashAvoidWhiteList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZCrashAvoidWhiteList.m; sourceTree = "<group>"; };
 		6B556467225ED9F300840330 /* KVOCrashController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KVOCrashController.h; sourceTree = "<group>"; };
 		6B556468225ED9F300840330 /* KVOCrashController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KVOCrashController.m; sourceTree = "<group>"; };
 		6B556469225ED9F300840330 /* KVOCrashController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KVOCrashController.xib; sourceTree = "<group>"; };
@@ -98,16 +115,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6B163A422260616D003FA1F8 /* NSTimerCrash */ = {
+			isa = PBXGroup;
+			children = (
+				6B163A432260619B003FA1F8 /* NSTimer+Crash.h */,
+				6B163A442260619B003FA1F8 /* NSTimer+Crash.m */,
+				6B163A462260673A003FA1F8 /* NSTimerProxy.h */,
+				6B163A472260673A003FA1F8 /* NSTimerProxy.m */,
+			);
+			path = NSTimerCrash;
+			sourceTree = "<group>";
+		};
+		6B163A4922606E34003FA1F8 /* NSTimerCrashDemo */ = {
+			isa = PBXGroup;
+			children = (
+				6B163A4A22606E9A003FA1F8 /* NSTimerViewController.h */,
+				6B163A4B22606E9A003FA1F8 /* NSTimerViewController.m */,
+				6B163A4C22606E9A003FA1F8 /* NSTimerViewController.xib */,
+			);
+			path = NSTimerCrashDemo;
+			sourceTree = "<group>";
+		};
+		6B163A522260779B003FA1F8 /* WhiteList(设置白名单) */ = {
+			isa = PBXGroup;
+			children = (
+				6B163A53226077CB003FA1F8 /* SZCrashAvoidWhiteList.h */,
+				6B163A54226077CB003FA1F8 /* SZCrashAvoidWhiteList.m */,
+			);
+			path = "WhiteList(设置白名单)";
+			sourceTree = "<group>";
+		};
 		6B556463225ED81700840330 /* AvoidCrash */ = {
 			isa = PBXGroup;
 			children = (
+				6B163A522260779B003FA1F8 /* WhiteList(设置白名单) */,
+				6B163A422260616D003FA1F8 /* NSTimerCrash */,
 				6B556465225ED86000840330 /* KVOCrash */,
-				6B556464225ED82C00840330 /* UnrecognizedSelector */,
+				6B556464225ED82C00840330 /* UnrecognizedSelectorCrash */,
 			);
 			path = AvoidCrash;
 			sourceTree = "<group>";
 		};
-		6B556464225ED82C00840330 /* UnrecognizedSelector */ = {
+		6B556464225ED82C00840330 /* UnrecognizedSelectorCrash */ = {
 			isa = PBXGroup;
 			children = (
 				6BA6A69A2253056400C97E8E /* ForwardingTarget.h */,
@@ -115,7 +164,7 @@
 				6BA6A69D2253058C00C97E8E /* NSObject+AvoidCrash.h */,
 				6BA6A69E2253058C00C97E8E /* NSObject+AvoidCrash.m */,
 			);
-			path = UnrecognizedSelector;
+			path = UnrecognizedSelectorCrash;
 			sourceTree = "<group>";
 		};
 		6B556465225ED86000840330 /* KVOCrash */ = {
@@ -123,6 +172,8 @@
 			children = (
 				6B556475225EE33F00840330 /* NSObject+KVOCrash.h */,
 				6B556476225EE33F00840330 /* NSObject+KVOCrash.m */,
+				6B163A4F226074E6003FA1F8 /* KVOProxy.h */,
+				6B163A50226074E6003FA1F8 /* KVOProxy.m */,
 			);
 			path = KVOCrash;
 			sourceTree = "<group>";
@@ -142,6 +193,7 @@
 		6B55646D225EDA8C00840330 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				6B163A4922606E34003FA1F8 /* NSTimerCrashDemo */,
 				6B55646E225EDAA900840330 /* UnrecognizedSelectorDemo */,
 				6B556466225ED9B500840330 /* KVOCrashDemo */,
 			);
@@ -319,6 +371,7 @@
 				6B55646B225ED9F300840330 /* KVOCrashController.xib in Resources */,
 				6BA6A66F2252F6B900C97E8E /* LaunchScreen.storyboard in Resources */,
 				6BA6A66C2252F6B900C97E8E /* Assets.xcassets in Resources */,
+				6B163A4E22606E9A003FA1F8 /* NSTimerViewController.xib in Resources */,
 				6BA6A66A2252F6B800C97E8E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,10 +399,15 @@
 			files = (
 				6B556477225EE33F00840330 /* NSObject+KVOCrash.m in Sources */,
 				6BA6A69F2253058C00C97E8E /* NSObject+AvoidCrash.m in Sources */,
+				6B163A452260619B003FA1F8 /* NSTimer+Crash.m in Sources */,
+				6B163A51226074E6003FA1F8 /* KVOProxy.m in Sources */,
+				6B163A55226077CB003FA1F8 /* SZCrashAvoidWhiteList.m in Sources */,
+				6B163A4D22606E9A003FA1F8 /* NSTimerViewController.m in Sources */,
 				6BA6A6672252F6B800C97E8E /* ViewController.m in Sources */,
 				6BA6A6722252F6B900C97E8E /* main.m in Sources */,
 				6BA6A6642252F6B800C97E8E /* AppDelegate.m in Sources */,
 				6B55646A225ED9F300840330 /* KVOCrashController.m in Sources */,
+				6B163A482260673A003FA1F8 /* NSTimerProxy.m in Sources */,
 				6B556474225EDDD900840330 /* KVOObservObj.m in Sources */,
 				6B556471225EDACA00840330 /* UnrecognizedSelectorViewController.m in Sources */,
 				6BA6A69C2253056400C97E8E /* ForwardingTarget.m in Sources */,

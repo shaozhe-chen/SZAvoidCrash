@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "SZCrashAvoidWhiteList.h"
 @interface AppDelegate ()
 
 @end
@@ -17,6 +18,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    NSArray *whiteList = @[@"ViewController",
+                           @"KVOProxy",
+                           @"NSTimerProxy",
+                           @"KVOObservObj",
+                           @"KVOCrashController",
+                           @"UnrecognizedSelectorViewController",
+                           @"NSTimerViewController"];
+    [[SZCrashAvoidWhiteList shareInstance] userInAllCrashWithWhiteLists:whiteList];
     ViewController *vc = [ViewController new];
     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:vc];
     self.window.rootViewController = navi;
